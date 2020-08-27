@@ -5,10 +5,7 @@ try:
     from django.core import urlresolvers
 except ImportError:
     from django import urls as urlresolvers
-try:
-    from django.urls.exceptions import NoReverseMatch
-except ImportError:
-    from django.core.urlresolvers import NoReverseMatch
+from django.urls.exceptions import NoReverseMatch
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
