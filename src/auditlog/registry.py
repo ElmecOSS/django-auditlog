@@ -117,6 +117,10 @@ class AuditlogModelRegistry(object):
         return (self.__class__, model, signal)
 
     def get_model_fields(self, model):
+
+        if model not in self._registry:
+            return None
+
         return {
             'include_fields': self._registry[model]['include_fields'],
             'exclude_fields': self._registry[model]['exclude_fields'],
