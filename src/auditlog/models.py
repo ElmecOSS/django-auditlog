@@ -12,7 +12,6 @@ from django.utils.encoding import smart_str
 from six import python_2_unicode_compatible, iteritems, integer_types
 from django.utils.translation import gettext_lazy as _
 
-from jsonfield.fields import JSONField
 from dateutil import parser
 from dateutil.tz import gettz
 
@@ -177,7 +176,7 @@ class LogEntry(models.Model):
     actor = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, related_name='+', verbose_name=_("actor"))
     remote_addr = models.GenericIPAddressField(blank=True, null=True, verbose_name=_("remote address"))
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name=_("timestamp"))
-    additional_data = JSONField(blank=True, null=True, verbose_name=_("additional data"))
+    additional_data = models.JSONField(blank=True, null=True, verbose_name=_("additional data"))
 
     objects = LogEntryManager()
 
