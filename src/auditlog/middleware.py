@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import threading
 import time
 from functools import partial
@@ -38,8 +36,8 @@ class AuditlogMiddleware(MiddlewareMixin):
         }
 
         # In case of proxy, set 'original' address
-        if request.META.get('HTTP_X_FORWARDED_FOR'):
-            threadlocal.auditlog['remote_addr'] = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
+        if request.headers.get('x-forwarded-for'):
+            threadlocal.auditlog['remote_addr'] = request.headers.get('x-forwarded-for').split(',')[0]
 
         # Connect signal for automatic logging
         if hasattr(request, 'user') and is_authenticated(request.user):

@@ -273,7 +273,7 @@ class DateTimeFieldModelTest(TestCase):
     now = timezone.now()
 
     def test_model_with_same_time(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -281,7 +281,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 1, msg="There is one log entry")
 
         # Change timestamp to same datetime and timezone
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         dtm.timestamp = timestamp
         dtm.date = datetime.date(2017, 1, 10)
         dtm.time = datetime.time(12, 0)
@@ -291,7 +291,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 1, msg="There is one log entry")
 
     def test_model_with_different_timezone(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -307,7 +307,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 1, msg="There is one log entry")
 
     def test_model_with_different_datetime(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -315,7 +315,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 1, msg="There is one log entry")
 
         # Change timestamp to another datetime in the same timezone
-        timestamp = datetime.datetime(2017, 1, 10, 13, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 13, 0, tzinfo=datetime.timezone.utc)
         dtm.timestamp = timestamp
         dtm.save()
 
@@ -323,7 +323,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 2, msg="There are two log entries")
 
     def test_model_with_different_date(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -339,7 +339,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 2, msg="There are two log entries")
 
     def test_model_with_different_time(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -355,7 +355,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 2, msg="There are two log entries")
 
     def test_model_with_different_time_and_timezone(self):
-        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 12, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -371,7 +371,7 @@ class DateTimeFieldModelTest(TestCase):
         self.assertTrue(dtm.history.count() == 2, msg="There are two log entries")
 
     def test_changes_display_dict_datetime(self):
-        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -399,7 +399,7 @@ class DateTimeFieldModelTest(TestCase):
 
 
     def test_changes_display_dict_date(self):
-        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -424,7 +424,7 @@ class DateTimeFieldModelTest(TestCase):
                              " USE_L10N is True with a different LANGUAGE_CODE."))
 
     def test_changes_display_dict_time(self):
-        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
@@ -449,14 +449,14 @@ class DateTimeFieldModelTest(TestCase):
                              " USE_L10N is True with a different LANGUAGE_CODE."))
 
     def test_update_naive_dt(self):
-        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=timezone.utc)
+        timestamp = datetime.datetime(2017, 1, 10, 15, 0, tzinfo=datetime.timezone.utc)
         date = datetime.date(2017, 1, 10)
         time = datetime.time(12, 0)
         dtm = DateTimeFieldModel(label='DateTimeField model', timestamp=timestamp, date=date, time=time, naive_dt=self.now)
         dtm.save()
 
         # Change with naive field doesnt raise error
-        dtm.naive_dt = timezone.make_naive(timezone.now(), timezone=timezone.utc)
+        dtm.naive_dt = timezone.make_naive(timezone.now(), timezone=datetime.timezone.utc)
         dtm.save()
 
 
@@ -555,7 +555,7 @@ class CharfieldTextfieldModelTest(TestCase):
 
     def test_changes_display_dict_longchar(self):
         self.assertTrue(self.obj.history.latest().changes_display_dict["longchar"][1] == \
-                        "{}...".format(self.PLACEHOLDER_LONGCHAR[:140]),
+                        f"{self.PLACEHOLDER_LONGCHAR[:140]}...",
                         msg="The string should be truncated at 140 characters with an ellipsis at the end.")
         SHORTENED_PLACEHOLDER = self.PLACEHOLDER_LONGCHAR[:139]
         self.obj.longchar = SHORTENED_PLACEHOLDER
@@ -565,7 +565,7 @@ class CharfieldTextfieldModelTest(TestCase):
 
     def test_changes_display_dict_longtextfield(self):
         self.assertTrue(self.obj.history.latest().changes_display_dict["longtextfield"][1] == \
-                "{}...".format(self.PLACEHOLDER_LONGTEXTFIELD[:140]),
+                f"{self.PLACEHOLDER_LONGTEXTFIELD[:140]}...",
                 msg="The string should be truncated at 140 characters with an ellipsis at the end.")
         SHORTENED_PLACEHOLDER = self.PLACEHOLDER_LONGTEXTFIELD[:139]
         self.obj.longtextfield = SHORTENED_PLACEHOLDER
@@ -616,10 +616,7 @@ class CompatibilityTest(TestCase):
 
         # Test compat.is_authenticated for anonymous users
         self.user = auth.get_user(self.client)
-        if django.VERSION < (1, 10):
-            assert self.user.is_anonymous()
-        else:
-            assert self.user.is_anonymous
+        assert self.user.is_anonymous
         assert not compat.is_authenticated(self.user)
 
         # Setup some other user, which is *not* anonymous, and check
@@ -629,10 +626,7 @@ class CompatibilityTest(TestCase):
             email="test.user@mail.com",
             password="auditlog"
         )
-        if django.VERSION < (1, 10):
-            assert not self.user.is_anonymous()
-        else:
-            assert not self.user.is_anonymous
+        assert not self.user.is_anonymous
         assert compat.is_authenticated(self.user)
 
 
@@ -656,11 +650,11 @@ class AdminPanelTest(TestCase):
         assert res.status_code == 200
         res = self.client.get("/admin/auditlog/logentry/add/")
         assert res.status_code == 200
-        res = self.client.get("/admin/auditlog/logentry/{}/".format(log_pk), follow=True)
+        res = self.client.get(f"/admin/auditlog/logentry/{log_pk}/", follow=True)
         assert res.status_code == 200
-        res = self.client.get("/admin/auditlog/logentry/{}/delete/".format(log_pk))
+        res = self.client.get(f"/admin/auditlog/logentry/{log_pk}/delete/")
         assert res.status_code == 200
-        res = self.client.get("/admin/auditlog/logentry/{}/history/".format(log_pk))
+        res = self.client.get(f"/admin/auditlog/logentry/{log_pk}/history/")
         assert res.status_code == 200
 
 

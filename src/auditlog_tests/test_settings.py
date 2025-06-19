@@ -25,15 +25,9 @@ middlewares = (
     'auditlog.middleware.AuditlogMiddleware',
 )
 
-if django.VERSION < (1, 10):
-    MIDDLEWARE_CLASSES = middlewares
-else:
-    MIDDLEWARE = middlewares
+MIDDLEWARE = middlewares
 
-if django.VERSION <= (1, 9):
-    POSTGRES_DRIVER = 'django.db.backends.postgresql_psycopg2'
-else:
-    POSTGRES_DRIVER = 'django.db.backends.postgresql'
+POSTGRES_DRIVER = 'django.db.backends.postgresql'
 
 DATABASE_ROUTERS = ['auditlog_tests.router.PostgresRouter']
 
