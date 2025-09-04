@@ -1,2 +1,2 @@
 django-jsonfield>=1.0.0
-python-dateutil==2.7.0
+python-dateutil>=2.7.0,<2.9.0
